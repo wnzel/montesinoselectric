@@ -1,0 +1,41 @@
+{
+  "business": {
+    "name": "Montesinos Electric",
+    "phone": "(623) 202-2164",
+    "phoneLink": "+16232022164",
+    "additionalPhone": "(602) 516-4732",
+    "email": "",
+    "quoteEndpoint": "",
+    "location": "Phoenix, Arizona",
+    "serviceArea": "Phoenix area",
+    "mapsUrl": "https://www.google.com/maps?cid=355354387304407656",
+    "story": "Montesinos Electric is a family-owned business dedicated to providing top-notch electrical services for nearly 20 years, including installations, troubleshooting, and electrical maintenance. Licensed and insured, we offer competitive pricing while focusing on transparency with our clients."
+  },
+  "services": [
+    {"slug":"ground-up-service", "name":"Ground-up Service", "short":"Built right from the start.", "description":"Whether you’re constructing a new building or upgrading existing infrastructure, our ground-up electrical services ensure all your electrical installations are done safely and efficiently.", "image":"b491a5_426005b9894545769617fbda0db945ae~mv2.jpeg", "examples":["Electrical systems for new construction", "Utility trenching and piping", "Panels and outlet wiring"], "category":"Residential"},
+    {"slug":"electrical-fixture-installation", "name":"Electrical Fixture Installation", "short":"Bring your space to life.", "description":"From lights, fans to panels and motors, our installation services cover all your electrical needs. Trust our licensed experts to install with precision and care.", "image":"b491a5_fd8ecd29af1041178416f8c4b21e27c9~mv2.jpeg", "examples":["Indoor and canopy lighting", "Ceiling fans and fixtures", "Panels and motors"], "category":"Residential"},
+    {"slug":"electrical-troubleshooting", "name":"Electrical Troubleshooting", "short":"Find the issue. Get it working.", "description":"Identify and solve electrical issues quickly and effectively with our expert troubleshooting service. Our skilled technicians are equipped to handle any challenge, ensuring your electrical systems run smoothly.", "image":"b491a5_b6d11ed284a9425f84b8a93bbfa2baa7~mv2.jpeg", "examples":["Electrical panel troubleshooting", "Commercial electrical systems", "Equipment and motor connections"], "category":"Commercial"}
+  ],
+  "projects": [
+    {"category":"Residential", "title":"Lighting & ceiling fan remodel", "image":"b491a5_1edc765e229d439694664c05f9359559~mv2.jpeg"},
+    {"category":"Residential", "title":"Finished lighting for a new home", "image":"b491a5_b2b366b4313b44678b6aafe6c2ce8d3c~mv2.jpg"},
+    {"category":"Residential", "title":"400 AMP panel for a new home", "image":"b491a5_83dde1d5fdbf4319bca7d28a36bd2414~mv2.jpeg"},
+    {"category":"Residential", "title":"Lighting & fan installation", "image":"b491a5_19bae2d031024b39964717978c86479c~mv2.jpeg"},
+    {"category":"Residential", "title":"New construction lighting", "image":"b491a5_fd158ff407844b958aa8810abe6dcc5c~mv2.jpeg"},
+    {"category":"Residential", "title":"Utility trenching & piping", "image":"b491a5_41f0aa55887849d387b797f2e466d4db~mv2.jpeg"},
+    {"category":"Residential", "title":"Outlet wiring in a new build", "image":"b491a5_ec44befa2e794051a7f9bcfce60e6fbd~mv2.jpeg"},
+    {"category":"Commercial", "title":"Canopy lights & fans", "image":"b491a5_ec0cdbdc720e4a06a15fc6efe9e375cd~mv2.jpeg"},
+    {"category":"Commercial", "title":"Car wash electrical installation", "image":"b491a5_b425d1006f9b484e88369eaa7eb48c18~mv2.jpeg"},
+    {"category":"Commercial", "title":"Electrical panel troubleshooting", "image":"b491a5_b6d11ed284a9425f84b8a93bbfa2baa7~mv2.jpeg"},
+    {"category":"Commercial", "title":"Bowling alley lighting", "image":"b491a5_e0cde1fab39a4a998a5014126b825c4e~mv2.jpeg"},
+    {"category":"Commercial", "title":"Three-phase subpanel & disconnect", "image":"b491a5_3f881cc4b0324205a8358cafe2823ce3~mv2.jpg"},
+    {"category":"Commercial", "title":"EMT conduit for low-voltage systems", "image":"b491a5_5372df62803b4dbd8d47f94eebdec926~mv2.jpg"},
+    {"category":"Industrial", "title":"Air compressor for a tire shop", "image":"b491a5_4fdcb756a1a7404ab323d5f8d0153e6e~mv2.jpg"},
+    {"category":"Industrial", "title":"Three-phase motor", "image":"b491a5_2df5dd94b93f4e9ba08eeff90067b992~mv2.jpeg"},
+    {"category":"Industrial", "title":"Walk-in freezer condenser", "image":"b491a5_47034e42dd604e5aaae147fb852f0e5a~mv2.jpeg"},
+    {"category":"Industrial", "title":"Electrical hose reel", "image":"b491a5_760b965864b347b29e63fb95be3b822f~mv2.jpeg"},
+    {"category":"Industrial", "title":"Flow switches", "image":"b491a5_54b5b1af296b44c78c4ace1bef471f82~mv2.jpeg"},
+    {"category":"Industrial", "title":"Shaker motor for a wood shop", "image":"b491a5_beeb6b3a70374e38a19c226b4e309850~mv2.jpeg"},
+    {"category":"Industrial", "title":"Conduit & box installation", "image":"b491a5_be0091e551cf4a9590862370b1e83729~mv2.jpeg"}
+  ]
+}

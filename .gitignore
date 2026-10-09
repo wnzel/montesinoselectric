@@ -1,0 +1,5 @@
+source-assets/
+__pycache__/
+artifacts/
+*.tar.gz
+.openai/.local/
