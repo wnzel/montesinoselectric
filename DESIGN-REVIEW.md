@@ -1,5 +1,13 @@
 # Design review, October 9, 2026
 
+October 10 refinement: preserve the existing contractor design system, with a full-width photograph behind the homepage introduction as requested. Persuade mode, design variance 4, motion intensity 2, density 4. The original crew photo and bottom-aligned CSS crop provide the scene; the source photo is unchanged. The user-requested photo hero and circular down control are deliberate exceptions to the skill's default restrictions on image overlays and scroll cues.
+
+| Before | After | Why |
+| --- | --- | --- |
+| Selfie in the right half of a split hero | Landscape photo of the crew installing ceiling lights behind the full hero | Matches the Peraltas Roofing background-photo layout and shows the actual work. |
+| Black headline on a light panel | Off-white headline over a dark photo overlay | Keeps the introduction readable across the photograph. |
+| Vercel published the repository root, producing a homepage 404 | Vercel publishes the committed dist directory | Places pages and absolute asset URLs at the intended site root. |
+
 Read this as a local contractor website for Valley homeowners and businesses, with practical typography and the company's own photographs. Persuade mode; static site with locally served GSAP photo effects. Design variance 4, motion intensity 2, density 4: structured layouts, photo motion tied to scrolling, easy access to services and contact details. Humanizer and Design Taste informed the refinement.
 
 | Before | After | Why |

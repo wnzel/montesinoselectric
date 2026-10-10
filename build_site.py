@@ -7,7 +7,7 @@ ROOT=Path(__file__).parent
 DIST=ROOT/'dist'
 DATA=json.loads((ROOT/'site-content.json').read_text(encoding='utf-8'))
 B=DATA['business'];SERVICES=DATA['services'];PROJECTS=DATA['projects']
-ORIGIN='https://montesinos-electric-redesign.wescuder.chatgpt.site'
+ORIGIN='https://montesinoselectric.vercel.app'
 e=lambda s:html.escape(str(s),quote=True)
 
 def button(label,href,style=''):return f'<a class="button {style}" href="{e(href)}">{label}</a>'
@@ -74,14 +74,14 @@ def save(path,title,description,content,active='',schema=None):
     destination=DIST/path.strip('/')/'index.html' if path!='/' else DIST/'index.html'
     destination.parent.mkdir(parents=True,exist_ok=True);destination.write_text(doc,encoding='utf-8');PAGES[path]=title
 
-home=f'''<section class="hero wrap">
-  <div class="hero-copy">
+home=f'''<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-photo">{image("b491a5_c102ea168a4c4b76956029cafde38851~mv2.jpg","Montesinos Electric crew installing ceiling lights at a job site",eager=True)}</div>
+  <div class="wrap hero-content"><div class="hero-copy">
     <p class="location">Licensed &amp; insured</p>
-    <h1>Your Valley<br>electricians.</h1>
+    <h1 id="hero-title">Your Valley<br>electricians.</h1>
     <p class="intro">Installation, troubleshooting and maintenance for homes, businesses and industrial spaces.</p>
     <div class="hero-actions">{button('Get a free quote','/contact/')}<a class="call-link" href="tel:{B['phoneLink']}">{B['phone']}</a></div>
-  </div>
-  {photo("b491a5_34c9b999e8984462b71b9c1979b3d321~mv2.jpeg","Montesinos Electric crew working on utility piping","hero-photo",eager=True)}
+  </div></div>
   <a class="hero-down" href="#electrical-services" aria-label="Explore electrical services"><span aria-hidden="true">↓</span></a>
 </section>
 <section class="section wrap" id="electrical-services" tabindex="-1" aria-labelledby="services-title"><div class="section-head"><div><h2 id="services-title">Electrical services</h2><p>Start with a free quote for new construction, fixture installation or an electrical problem.</p></div>{textlink('Explore all services','/services/')}</div><div class="service-list">{''.join(service(s) for s in SERVICES)}</div></section>

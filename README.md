@@ -20,6 +20,10 @@ The original site also lists (602) 516-4732; it is retained on the contact page.
 
 ## Publication
 
+Vercel serves the committed `dist/` directory. `vercel.json` selects the Other framework preset, skips install/build commands, and sets `outputDirectory` to `dist`. Import the repository with its Root Directory at the repository root, leaving the directory field empty. Pushes to `main` deploy through the existing Vercel GitHub integration. The public review URL is [montesinoselectric.vercel.app](https://montesinoselectric.vercel.app/).
+
+The HTML, stylesheet, image and script URLs all begin at the site root. Serving the repository root instead of `dist/` causes a homepage 404 and broken asset URLs under `/dist/`.
+
 The Sites project ID and static directory live in `.openai/hosting.json`. This build is a private review site, with `noindex,nofollow` and a disallow-all robots.txt to avoid indexing duplicate content. The original Wix site and domain are unchanged. Before launching on the business domain, update `ORIGIN` in `build_site.py`, remove the preview indexing restrictions, regenerate the sitemap, connect quote delivery, and confirm service coverage and business details with the owner.
 
 ## Source and review
@@ -28,7 +32,7 @@ See `SOURCE-AUDIT.md` for the original page review and pending business details,
 
 ## Photo motion
 
-The desktop hero fills the viewport, with the introduction and quote actions on the left and an original photo of the crew working on utility piping on the right. A circular down link reaches Electrical Services. Service photos are larger on the homepage and Services page.
+The hero fills the available first-screen height below the header. An original landscape photo of the crew installing ceiling lights covers its full width, with the introduction and quote actions over a dark overlay on the left. Responsive CSS crops the photo from the bottom to keep the crew visible without altering the source image. The hero stays still. A circular down link reaches Electrical Services. Service photos are larger on the homepage and Services page.
 
 GSAP 3.15.0 and ScrollTrigger are served locally from `dist/vendor/`. Only the two photos in the family-owned business section move vertically inside fixed frames. Desktop travel is 18px in each direction; mobile travel is 9px, with 1.2-second scrub smoothing. The hero, service, gallery and blog photos stay still. There is no zoom or reveal clipping. GSAP is loaded only on Home and Our Story, where that section appears. Text and page geometry stay still. Live reduced-motion changes revert the story photo effects; missing vendor scripts leave complete still photos and working contact/navigation interactions. No npm install or build-time JavaScript dependency is needed. With JavaScript disabled, navigation and direct photo links remain available; quote requests are directed to the phone number.
 
@@ -36,4 +40,4 @@ The regional Valley map loads automatically in its embedded frame. Its Google co
 
 ## GitHub
 
-Source and generated output are maintained on `main` at [wnzel/montesinoselectric](https://github.com/wnzel/montesinoselectric). Pushing this repository does not deploy the business domain.
+Source and generated output are maintained on `main` at [wnzel/montesinoselectric](https://github.com/wnzel/montesinoselectric). Pushes update the Vercel review deployment. The original business domain remains on Wix.
