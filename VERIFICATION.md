@@ -1,5 +1,12 @@
 # Verification, October 10, 2026 Vercel and photo hero
 
+## October 10 hero label, service motion, carousel arrows and stories band
+
+- Hero label changed from Licensed & insured to Montesinos Electric, keeping the existing 800ms entrance with the headline. The value band still lists the license/insurance claim.
+- Home and Services service photos now share the family-photo scroll drift (18px desktop, 9px phone, 28px/16px bleed). Locally at 1440 by 900, five ScrollTrigger instances run on Home and the service image transforms change while scrolling.
+- Home carousel: Next (top) and Previous (bottom) stack to the right of the photos, centred on the 300px photo height; no visible counter, and the position status is screen-reader-only. Next advanced one project and re-enabled Previous. No horizontal overflow at 390 by 844 or 320 by 740.
+- Project stories now has a warm tinted background (#fbf7e4), separating it from the grey Valley band and the white quote section. The static validator passes all 27 HTML files.
+
 ## October 10 service-business-website template checks
 
 - Applied the requested saved template in the existing static generator. Content configuration and Vercel configuration are unchanged. All sixteen pages and ten original redirects remain; twenty original project entries, three services, original story/photos and both phone numbers are retained. No reviews, rating summary, social destinations or service-area boundaries were invented.

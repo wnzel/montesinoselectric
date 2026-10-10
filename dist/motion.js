@@ -1,5 +1,5 @@
 (() => {
-  // Only the family-business photos move; their frames and copy stay put.
+  // Service and family-business photos drift inside still frames; copy stays put.
   // The page remains complete when either vendor script is unavailable.
   if (!window.gsap || !window.ScrollTrigger) return;
   const { gsap, ScrollTrigger } = window;
@@ -15,14 +15,14 @@
     const travel = mobile ? 9 : 18;
     const bleed = mobile ? 16 : 28;
 
-    document.querySelectorAll('.story-photos .photo-frame').forEach((frame, index) => {
+    document.querySelectorAll('.service-thumb .photo-frame, .story-photos .photo-frame').forEach((frame, index) => {
       const img = frame.querySelector('img');
       if (!img) return;
       gsap.set(frame, { '--photo-bleed': `${bleed}px` });
       gsap.fromTo(img,
         { y: -travel },
         { y: travel, ease: 'none', scrollTrigger: {
-          id: `story-drift-${index}`, trigger: frame,
+          id: `photo-drift-${index}`, trigger: frame,
           start: 'clamp(top bottom)', end: 'clamp(bottom top)',
           scrub: 1.2, invalidateOnRefresh: true
         } }

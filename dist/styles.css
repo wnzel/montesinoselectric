@@ -5,6 +5,7 @@
   --accent-hover: #f0ce24;
   --surface: #fefefd;
   --surface-secondary: #f3f4f0;
+  --surface-warm: #fbf7e4;
   --text: #161616;
   --text-muted: #555750;
   --border: #d9dcd4;
@@ -129,7 +130,8 @@ button:disabled { cursor: default; opacity: .45; }
 .gallery-intro { text-align: center; }
 .gallery-intro p { margin: 20px auto 0; max-width: 320px; }
 .gallery-intro .text-link { margin-top: 22px; }
-.project-slider { min-width: 0; }
+.project-slider { --slide-photo: 300px; min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 24px; align-items: start; }
+.project-slider .project-image { height: var(--slide-photo); }
 .gallery-track { display: flex; gap: 28px; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: thin; scrollbar-color: var(--text-muted) var(--surface-secondary); padding-bottom: 12px; }
 .gallery-track .project-card { flex: 0 0 calc((100% - 28px) / 2); scroll-snap-align: start; min-width: 0; }
 .project-slider.is-enhanced .gallery-track { scrollbar-width: none; }
@@ -139,9 +141,9 @@ button:disabled { cursor: default; opacity: .45; }
 .project-meta { padding-top: 14px; text-align: center; }
 .project-meta span { color: var(--text-muted); font-size: 14px; }
 .project-meta h3 { margin-top: 5px; font-size: 20px; line-height: 1.4; font-weight: 600; }
-.carousel-controls { display: flex; align-items: center; justify-content: flex-end; gap: 16px; margin-top: 22px; }
-.carousel-controls button { width: 56px; height: 48px; border: 1px solid var(--text); border-radius: var(--radius); color: var(--text); background: transparent; font-size: 24px; transition: background-color 160ms var(--ease-out), color 160ms var(--ease-out); }
-.carousel-status { color: var(--text-muted); font-size: 15px; min-width: 96px; text-align: center; }
+/* Next above Previous, centred on the photos, as in the reference template. */
+.carousel-controls { display: flex; flex-direction: column; gap: 16px; margin-top: calc(var(--slide-photo) / 2 - 58px); }
+.carousel-controls button { display: flex; align-items: center; justify-content: center; width: 62px; height: 50px; border: 1px solid var(--text); border-radius: var(--radius); color: var(--text); background: var(--surface); font-size: 22px; line-height: 1; transition: background-color 160ms var(--ease-out), color 160ms var(--ease-out); }
 
 .story-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 72px; align-items: center; }
 .story-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; padding-top: 40px; }
@@ -154,6 +156,7 @@ button:disabled { cursor: default; opacity: .45; }
 .value-band p { color: var(--text); max-width: 620px; margin: 18px auto 0; }
 .value-band ul { list-style: none; display: flex; justify-content: center; gap: 24px 48px; flex-wrap: wrap; margin: 28px 0 0; padding: 0; font-weight: 600; font-size: 17px; }
 .area { background: var(--surface-secondary); }
+.stories-section { background: var(--surface-warm); }
 .area-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 72px; align-items: center; }
 .area-copy { text-align: center; }
 .area-copy p { margin: 22px auto 0; max-width: 410px; }
@@ -291,7 +294,8 @@ button:disabled { cursor: default; opacity: .45; }
 
 @media (hover: hover) and (pointer: fine) {
   .button:hover { background: #343531; }
-  .button.outline:hover, .carousel-controls button:not(:disabled):hover { background: var(--text); color: var(--surface); }
+  .button.outline:hover { background: var(--text); color: var(--surface); }
+  .carousel-controls button:not(:disabled):hover { background: var(--accent); }
   .button.on-photo:hover { background: var(--on-photo); color: var(--text); }
   .button:hover .button-arrow { transform: translateX(4px); }
   .text-link:hover, .navlinks a:not(.button):hover { text-decoration: underline; text-underline-offset: 5px; }
@@ -300,7 +304,7 @@ button:disabled { cursor: default; opacity: .45; }
   .filter:not([aria-pressed=true]):hover { background: var(--surface-secondary); }
   .project-open:hover h3, .service-body a:hover, .blog-card h3 a:hover { text-decoration: underline; text-underline-offset: 4px; }
   .hero-down:hover { background: var(--text); }
-  /* The user's photo-motion limit keeps service/gallery/blog images still. */
+  /* Only service and family-business photos drift; gallery/blog images stay still. */
 }
 @media (max-width: 1199px) {
   .menu-toggle { display: inline-flex; }
@@ -393,7 +397,9 @@ button:disabled { cursor: default; opacity: .45; }
   .gallery-track { gap: 20px; }
   .gallery-track .project-card { flex-basis: 100%; }
   .project-image { height: 300px; }
-  .carousel-controls { justify-content: center; margin-top: 18px; }
+  .project-slider { column-gap: 12px; }
+  .carousel-controls { gap: 12px; margin-top: calc(var(--slide-photo) / 2 - 51px); }
+  .carousel-controls button { width: 48px; height: 45px; font-size: 20px; }
   .story-grid, .area-grid { gap: 32px; }
   .story-photos { gap: 16px; padding-top: 20px; }
   .story-photos .large { height: 300px; margin-top: -20px; }
