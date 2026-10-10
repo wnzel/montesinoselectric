@@ -1,5 +1,5 @@
 (() => {
-  // Each photo owns its motion; the fixed frames and surrounding text stay put.
+  // Only the family-business photos move; their frames and copy stay put.
   // The page remains complete when either vendor script is unavailable.
   if (!window.gsap || !window.ScrollTrigger) return;
   const { gsap, ScrollTrigger } = window;
@@ -12,34 +12,21 @@
   }, context => {
     if (context.conditions.reduce) return;
     const mobile = context.conditions.mobile;
-    const travel = mobile ? 32 : 72;
-    const bleed = mobile ? 48 : 96;
+    const travel = mobile ? 9 : 18;
+    const bleed = mobile ? 16 : 28;
 
-    document.querySelectorAll('.photo-frame').forEach((frame, index) => {
+    document.querySelectorAll('.story-photos .photo-frame').forEach((frame, index) => {
       const img = frame.querySelector('img');
       if (!img) return;
       gsap.set(frame, { '--photo-bleed': `${bleed}px` });
       gsap.fromTo(img,
-        { y: -travel, scale: 1.12 },
-        { y: travel, scale: 1, ease: 'none', scrollTrigger: {
-          id: `photo-drift-${index}`, trigger: frame,
+        { y: -travel },
+        { y: travel, ease: 'none', scrollTrigger: {
+          id: `story-drift-${index}`, trigger: frame,
           start: 'clamp(top bottom)', end: 'clamp(bottom top)',
-          scrub: 0.45, invalidateOnRefresh: true
+          scrub: 1.2, invalidateOnRefresh: true
         } }
       );
-
-      // The opening photo starts fully visible. Other photos reveal their
-      // lower edge as they enter, and rewind when the visitor scrolls back.
-      if (!frame.classList.contains('hero-photo')) {
-        gsap.fromTo(frame,
-          { clipPath: 'inset(0% 0% 18% 0%)' },
-          { clipPath: 'inset(0% 0% 0% 0%)', ease: 'none', scrollTrigger: {
-            id: `photo-reveal-${index}`, trigger: frame,
-            start: 'top 94%', end: 'top 60%',
-            scrub: 0.3, invalidateOnRefresh: true
-          } }
-        );
-      }
     });
     // matchMedia automatically reverts these styles and triggers on resize
     // and when the motion preference changes. No hidden content is required.

@@ -28,9 +28,9 @@ See `SOURCE-AUDIT.md` for the original page review and pending business details,
 
 ## Photo motion
 
-The desktop hero fills the viewport, with the introduction and quote actions on the left and an original project photo on the right. A circular down link reaches Electrical Services. Service photos are larger on the homepage and Services page.
+The desktop hero fills the viewport, with the introduction and quote actions on the left and an original photo of the crew working on utility piping on the right. A circular down link reaches Electrical Services. Service photos are larger on the homepage and Services page.
 
-GSAP 3.15.0 and ScrollTrigger are served locally from `dist/vendor/`. Project, service and team photos reveal their lower edge, zoom out slightly and move vertically inside fixed frames. Desktop travel is 72px in each direction; mobile travel is 32px. Text and page geometry stay still. Live reduced-motion changes revert all photo effects; missing vendor scripts leave complete still photos and working contact/navigation interactions. No npm install or build-time JavaScript dependency is needed. With JavaScript disabled, navigation and direct photo links remain available; quote requests are directed to the phone number.
+GSAP 3.15.0 and ScrollTrigger are served locally from `dist/vendor/`. Only the two photos in the family-owned business section move vertically inside fixed frames. Desktop travel is 18px in each direction; mobile travel is 9px, with 1.2-second scrub smoothing. The hero, service, gallery and blog photos stay still. There is no zoom or reveal clipping. GSAP is loaded only on Home and Our Story, where that section appears. Text and page geometry stay still. Live reduced-motion changes revert the story photo effects; missing vendor scripts leave complete still photos and working contact/navigation interactions. No npm install or build-time JavaScript dependency is needed. With JavaScript disabled, navigation and direct photo links remain available; quote requests are directed to the phone number.
 
 The regional Valley map loads automatically in its embedded frame. Its Google connection is described on the privacy page. The redundant business-listing buttons are removed; the accessibility page retains a plain external alternative.
 

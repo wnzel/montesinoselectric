@@ -1,6 +1,6 @@
 # Design review, October 9, 2026
 
-Read this as a local contractor website for Valley homeowners and businesses, with practical typography and the company's own photographs. Persuade mode; static site with locally served GSAP photo effects. Design variance 4, motion intensity 5, density 4: structured layouts, photo motion tied to scrolling, easy access to services and contact details. Humanizer and Design Taste informed the refinement.
+Read this as a local contractor website for Valley homeowners and businesses, with practical typography and the company's own photographs. Persuade mode; static site with locally served GSAP photo effects. Design variance 4, motion intensity 2, density 4: structured layouts, photo motion tied to scrolling, easy access to services and contact details. Humanizer and Design Taste informed the refinement.
 
 | Before | After | Why |
 | --- | --- | --- |
@@ -82,10 +82,14 @@ Mechanical preflight and project validator pass. Browser review covers desktop, 
 | Still photo crops | Photos drift within fixed frames while reading copy stays steady | Match the Peralta's cropped parallax reference without changing page flow. |
 | Viewer triggers require JavaScript | Photo links target their original full-size image and enhance into dialogs | Keep project imagery available in the static fallback. |
 
-## Fullscreen hero and stronger motion follow-up
+## Earlier fullscreen hero and stronger motion follow-up
 
 The hero now fills the desktop viewport with an original lighting project photo on the right, and the quote/phone actions under the introduction on the left. The down-circle is a native anchor with a meaningful target and visible keyboard focus. Service photos grow from 170 × 132px to 300 × 220px on desktop and fill the row width on phones. “The good guy price” remains in the story and footer.
 
 The browser-dependent native timeline is replaced by GSAP ScrollTrigger. Photos reveal, zoom out and drift with scroll; reverse scrolling retraces the effect. Copy stays still. Live media changes clean up all owned styles/triggers. Initially visible photos now reveal fully, correcting an edge case found during testing. Maps render automatically, with redundant listing buttons removed.
 
 See VERIFICATION.md for the current browser evidence and fallback checks.
+
+## Current crew photo and calmer story motion
+
+The hero uses the original utility-piping crew photo with its crop centered on the people. The two family-business photos are the only images with scroll motion, on Home and Our Story. Their travel drops 75% to 18px on desktop and 9px on phones; smoothing increases to 1.2 seconds. Zoom and reveal clipping are removed. Other photos remain still, and pages without that section no longer load animation scripts. The accessibility copy now describes this scope.
