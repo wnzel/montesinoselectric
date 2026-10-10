@@ -1,4 +1,19 @@
-# Verification, October 9, 2026 crew-photo refinement
+# Verification, October 10, 2026 Vercel and photo hero
+
+The public deployment at https://montesinoselectric.vercel.app/ is working. Before the fix, its root returned Vercel's NOT_FOUND 404 while /dist/ returned the website HTML. Commit 7fc7506 adds the static output configuration and full-width crew-photo hero. Vercel's GitHub status reports a successful production deployment for that commit.
+
+- Vercel now publishes only dist at the site root, with no install or build step. Generated canonical URLs, social metadata, structured data and the sitemap use the verified Vercel review domain.
+- All 27 HTML files pass the static validator. Local HTTP checks serve 64 page and asset files. Live HTTP checks pass for 73 page, asset and directory URLs, including services, project stories and the original booking entry point. An unknown live route returns the branded 404 page with HTTP 404.
+- Visual checks on the live site pass at 1280 by 900, 1280 by 640, 390 by 844 and 320 by 760. The landscape crew photo fills the hero width, stays still, and crops from the bottom to retain the workers. Text and contact actions remain visible, with no horizontal overflow. The source photo is unchanged.
+- The mobile menu opens and closes with Escape. Keyboard activation of the circular down link reaches Electrical Services, places its top below the sticky header, and focuses the target. Service images remain still.
+- Only the two family-business photos receive transforms. Live reduced-motion emulation restores still photos and zero bleed. With JavaScript disabled, the hero image loads, the down-link target remains valid, and desktop content has no horizontal overflow. Emulation was restored after the checks.
+- Gallery navigation opens the correct page. Commercial filtering shows six projects; the photo dialog opens, advances to the second photo, closes with Escape, and restores focus to the triggering link.
+- The Google map automatically loads Valley map tiles on the live site. No application console errors were observed. An earlier Vercel login page logged a Google sign-in network error before the public domain was opened; it is unrelated to the application.
+- Application JavaScript syntax and Git whitespace checks pass. Design Taste scans 34 output and design-document files with zero hard violations and warnings. Email and quote delivery remain unconfigured as requested.
+
+Screenshots are in ignored artifacts/: full-photo-hero-desktop.png, full-photo-hero-mobile.png and full-photo-hero-preview.png. Viewport, reduced-motion and scripting overrides were reset. The live homepage is left open for review; localhost serves the same committed dist files at http://127.0.0.1:4173/.
+
+## Earlier verification, October 9, 2026 crew-photo refinement
 
 Ready for local review at http://127.0.0.1:4173/.
 

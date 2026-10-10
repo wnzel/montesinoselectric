@@ -24,7 +24,7 @@ Vercel serves the committed `dist/` directory. `vercel.json` selects the Other f
 
 The HTML, stylesheet, image and script URLs all begin at the site root. Serving the repository root instead of `dist/` causes a homepage 404 and broken asset URLs under `/dist/`.
 
-The Sites project ID and static directory live in `.openai/hosting.json`. This build is a private review site, with `noindex,nofollow` and a disallow-all robots.txt to avoid indexing duplicate content. The original Wix site and domain are unchanged. Before launching on the business domain, update `ORIGIN` in `build_site.py`, remove the preview indexing restrictions, regenerate the sitemap, connect quote delivery, and confirm service coverage and business details with the owner.
+Metadata for the earlier Sites preview lives in `.openai/hosting.json`. The Vercel deployment is a public review site, with `noindex,nofollow` and a disallow-all robots.txt to avoid indexing duplicate content. The original Wix site and domain are unchanged. Before launching on the business domain, update `ORIGIN` in `build_site.py`, remove the preview indexing restrictions, regenerate the sitemap, connect quote delivery, and confirm service coverage and business details with the owner.
 
 ## Source and review
 
