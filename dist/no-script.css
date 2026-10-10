@@ -1,5 +1,5 @@
 /* Loaded only when scripting is disabled. Photo links open their full images. */
-.menu-toggle, .filters [data-filter], .load-map, .quote-form { display: none; }
+.menu-toggle, .filters [data-filter], .quote-form { display: none; }
 .photo-frame { --photo-bleed: 0px !important; }
 .photo-frame > img { animation: none !important; transform: none !important; }
 @media (max-width: 960px) {

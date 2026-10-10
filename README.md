@@ -8,7 +8,7 @@ From this directory, run `python preview_server.py`, then visit [localhost](http
 
 ## Content and pages
 
-Edit `site-content.json` for the business story, contact information, service descriptions, project captions, and gallery images. `build_site.py` generates HTML pages. It uses Python and Pillow to prepare compressed images. The generated `dist/` is included and can be hosted directly. `page-inventory.json` lists the generated pages. `dist/styles.css` and `dist/app.js` contain the styling and interactions.
+Edit `site-content.json` for the business story, contact information, service descriptions, project captions, and gallery images. `build_site.py` generates HTML pages. It uses Python and Pillow to prepare compressed images. The generated `dist/` is included and can be hosted directly. `page-inventory.json` lists the generated pages. `dist/styles.css`, `dist/app.js` and `dist/motion.js` contain the styling and interactions.
 
 The site includes Home, Services, three service detail pages, Our Work, Our Story, Blog, three original project stories, Service Area, Contact / Free Quote, Website Privacy, Accessibility, and a 404 page. Old booking and service entry points route to the corresponding new pages. Gallery filters and keyboard-accessible photo dialogs work without a backend. Quote requests can be prepared and copied locally.
 
@@ -28,7 +28,11 @@ See `SOURCE-AUDIT.md` for the original page review and pending business details,
 
 ## Photo motion
 
-Project, service and team photographs drift gently inside cropped frames as visitors scroll. Native CSS view timelines are a progressive enhancement; text and layout stay fixed. Phone layouts use less travel. Reduced-motion settings and browsers without scroll-timeline support show still photographs. No animation library or build-time JavaScript dependency is required. With JavaScript disabled, navigation and direct photo links remain available; quote requests are directed to the phone number.
+The desktop hero fills the viewport, with the introduction and quote actions on the left and an original project photo on the right. A circular down link reaches Electrical Services. Service photos are larger on the homepage and Services page.
+
+GSAP 3.15.0 and ScrollTrigger are served locally from `dist/vendor/`. Project, service and team photos reveal their lower edge, zoom out slightly and move vertically inside fixed frames. Desktop travel is 72px in each direction; mobile travel is 32px. Text and page geometry stay still. Live reduced-motion changes revert all photo effects; missing vendor scripts leave complete still photos and working contact/navigation interactions. No npm install or build-time JavaScript dependency is needed. With JavaScript disabled, navigation and direct photo links remain available; quote requests are directed to the phone number.
+
+The regional Valley map loads automatically in its embedded frame. Its Google connection is described on the privacy page. The redundant business-listing buttons are removed; the accessibility page retains a plain external alternative.
 
 ## GitHub
 

@@ -1,6 +1,6 @@
 # Design review, October 9, 2026
 
-Read this as a local contractor website for Valley homeowners and businesses, with practical typography and the company's own photographs. Persuade mode; native CSS refinement. Design variance 4, motion intensity 3, density 4: structured layouts, photo motion tied to scrolling, easy access to services and contact details. Humanizer and Design Taste informed the refinement.
+Read this as a local contractor website for Valley homeowners and businesses, with practical typography and the company's own photographs. Persuade mode; static site with locally served GSAP photo effects. Design variance 4, motion intensity 5, density 4: structured layouts, photo motion tied to scrolling, easy access to services and contact details. Humanizer and Design Taste informed the refinement.
 
 | Before | After | Why |
 | --- | --- | --- |
@@ -29,12 +29,12 @@ Universal Core checklist results:
 | Motion | Cropped photo parallax, fixed copy, smaller mobile travel; live reduced-motion and static fallbacks. |
 | Dark mode | Locked light theme for service reading and inspecting daylight photographs. |
 | Responsive | Desktop and mobile reviewed, including 320px; layouts stack below 768px. |
-| Interaction states | Native form validation, local summary, clipboard fallback, selected filters, menu states and native photo dialog retained. Map connection is handled by Google after selection. |
+| Interaction states | Native form validation, local summary, clipboard fallback, selected filters, menu states and native photo dialog retained. The map connects to Google automatically, as described on the privacy page. |
 | Layout restraint | No decorative status dots or service boxes; separators organize the short service list. |
 | No fake visuals | Original photos/logo only; decorative icons and false street illustration removed. |
 | Fake-precise numbers | None added; original experience claim and photo captions preserved. |
 | No generic design tells | Plain headings, one purposeful font family, specific services and actual business assets. |
-| Core Web Vitals | No formal benchmark. Explicit image dimensions, text-led hero, lazy supporting images and 29 KB local WOFF2 font reduce loading work and layout shifts. |
+| Core Web Vitals | No formal benchmark. Explicit image dimensions, eager hero photo, lazy supporting images and 29 KB local WOFF2 font reduce loading work and layout shifts. |
 
 Persuade checklist results:
 
@@ -45,8 +45,8 @@ Persuade checklist results:
 | Premium-consumer palette | N/A: contractor site. |
 | Content density | Short introductions; full project collections have their own pages; original story retained by request. |
 | Real images | Existing company photos required by user; no generated assets. |
-| Hero fits viewport | Two-line heading, short description, quote action visible on desktop and mobile. |
-| Hero top padding | 52px desktop, 32px mobile. |
+| Hero fits viewport | Full viewport on desktop, with right-side photo and left-side heading, description and actions. Mobile stacks naturally. |
+| Hero top padding | 40px desktop, 28px on shorter desktop viewports, 36px mobile. |
 | Hero stack | License label, headline, description and actions. |
 | Eyebrow count | No repeated uppercase section labels. |
 | Split-header ban | Descriptions below headings; section navigation links beside them. |
@@ -56,24 +56,24 @@ Persuade checklist results:
 | Bento background diversity | N/A: no bento. |
 | Trust logo wall | N/A: no trust logos. |
 | Marquee count | N/A: no marquee. |
-| Section-layout repetition | Text-led split hero, service rows, project photos, paired team photos and varied journal layout. |
+| Section-layout repetition | Full-height split hero, larger service photos in rows, project photos, paired team photos and varied journal layout. |
 | Bento cell rhythm | N/A: no bento. |
 | Photo overlays | Removed. |
-| Decorative photo credits | None; opening photo and caption removed at the user’s request. |
+| Decorative photo credits | None; the new hero uses an original project photo without a decorative caption. |
 | Version footers | None. |
 | Micro-meta sentences | None. |
 | Hero decoration strip | Removed. |
 | Floating corner description | None. |
 | Scoring/progress bars | N/A: no scoring. |
 | Locale strips | The Valley identifies service coverage for the local-business brief; no clocks or weather decoration. |
-| Scroll cues | None. |
+| Scroll cues | The circular down link is explicitly requested by the user and reaches Electrical Services. |
 | Hero version labels | None. |
 | Numbered section labels | None. |
 | Quote length | N/A: no testimonials. |
 
 Mechanical preflight and project validator pass. Browser review covers desktop, mobile navigation, narrow page layouts, gallery filtering, photo advancement, Escape/focus restoration, and the local quote summary. Screenshots are under ignored `artifacts/`. The server remains running for the user's requested localhost review.
 
-## Valley and motion refinement
+## Earlier Valley and motion refinement (superseded by the fullscreen follow-up)
 
 | Before | After | Why |
 | --- | --- | --- |
@@ -81,3 +81,11 @@ Mechanical preflight and project validator pass. Browser review covers desktop, 
 | Opening new-home photo | Text-led opening with the quote and phone beside the heading | Remove the specific photo the user requested. |
 | Still photo crops | Photos drift within fixed frames while reading copy stays steady | Match the Peralta's cropped parallax reference without changing page flow. |
 | Viewer triggers require JavaScript | Photo links target their original full-size image and enhance into dialogs | Keep project imagery available in the static fallback. |
+
+## Fullscreen hero and stronger motion follow-up
+
+The hero now fills the desktop viewport with an original lighting project photo on the right, and the quote/phone actions under the introduction on the left. The down-circle is a native anchor with a meaningful target and visible keyboard focus. Service photos grow from 170 × 132px to 300 × 220px on desktop and fill the row width on phones. “The good guy price” remains in the story and footer.
+
+The browser-dependent native timeline is replaced by GSAP ScrollTrigger. Photos reveal, zoom out and drift with scroll; reverse scrolling retraces the effect. Copy stays still. Live media changes clean up all owned styles/triggers. Initially visible photos now reveal fully, correcting an edge case found during testing. Maps render automatically, with redundant listing buttons removed.
+
+See VERIFICATION.md for the current browser evidence and fallback checks.
