@@ -1,5 +1,16 @@
 # Design review, October 9, 2026
 
+October 10 navbar and contact-page refinement: continue the same practical contractor design, with the user's Peraltas Roofing navbar behavior. Persuade mode for the homepage, Operate mode for the quote form. Design variance 4, motion intensity 2, density 4; quote form density 5. The yellow banner, original logo and source photo remain.
+
+| Before | After | Why |
+| --- | --- | --- |
+| White homepage navbar above the image | Transparent navbar over the image, white after scrolling | Blends the first view with the landing photograph as requested. |
+| Dark logo and navigation over a light panel | White logo and text over a shaded photo, dark on the white header | Keeps navigation readable in both states. |
+| A large contact-page introduction and a stacked form at the review width | Heading and contact details beside a compact form | Fits the complete initial quote interface in one desktop screen. |
+| Form begins below the first screen | Responsive field rows with all six fields and native validation | Improves access without removing project information. |
+
+The navbar switches state with IntersectionObserver, reverses on returning to the top, and uses a white header while the mobile menu is open. The white default remains usable without JavaScript. Desktop quote checks include 938 by 892, 1280 by 720, 1280 by 640 and 938 by 640. The Valley section starts below the initial contact screen and scrolls normally. Phone layouts retain readable labels and natural page flow.
+
 October 10 refinement: preserve the existing contractor design system, with a full-width photograph behind the homepage introduction as requested. Persuade mode, design variance 4, motion intensity 2, density 4. The original crew photo and bottom-aligned CSS crop provide the scene; the source photo is unchanged. The user-requested photo hero and circular down control are deliberate exceptions to the skill's default restrictions on image overlays and scroll cues.
 
 | Before | After | Why |

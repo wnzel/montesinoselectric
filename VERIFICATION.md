@@ -1,5 +1,13 @@
 # Verification, October 10, 2026 Vercel and photo hero
 
+October 10 navbar and quote-page checks, before publication:
+
+- The local homepage navbar is transparent at the top, with white text and logo. At scrollY 216 it is white with dark text and remains at viewport top. Returning to the top restores the transparent state. The yellow banner remains above the photo.
+- The hero ends at the viewport bottom and has no horizontal overflow. At 390 by 844, opening the menu switches its header and navigation to white with dark text; following Contact opens the quote page with a white header.
+- The complete initial contact interface fits at 938 by 892, 1280 by 720, 1280 by 640 and 938 by 640. At 938 by 892, the form ends at 794px and the Valley section starts at 892px. At 938 by 640, contact details end at 609px, the form ends at 601px and the Valley section starts at 640px.
+- All six quote fields remain. Mobile has one column and no horizontal overflow. Submitting an empty form focuses the required name field and keeps the summary hidden. A synthetic valid request produces the correct local summary and focuses its heading. No request is sent.
+- Reduced motion disables header transitions and leaves photos still. With JavaScript disabled, the header remains white with dark text and the hero image loads. Development emulation is restored afterward. No browser application errors were observed.
+
 The public deployment at https://montesinoselectric.vercel.app/ is working. Before the fix, its root returned Vercel's NOT_FOUND 404 while /dist/ returned the website HTML. Commit 7fc7506 adds the static output configuration and full-width crew-photo hero. Vercel's GitHub status reports a successful production deployment for that commit.
 
 - Vercel now publishes only dist at the site root, with no install or build step. Generated canonical URLs, social metadata, structured data and the sitemap use the verified Vercel review domain.

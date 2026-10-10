@@ -1,6 +1,17 @@
+const siteHeader=document.querySelector('.header');
+const headerSentinel=document.querySelector('.header-sentinel');
+// The homepage overlays the photo only when scroll-state enhancement is ready.
+// Missing JavaScript or observer support leaves a readable white sticky header.
+if(siteHeader&&headerSentinel&&'IntersectionObserver' in window){
+  siteHeader.classList.toggle('is-scrolled',window.scrollY>48);
+  document.body.classList.add('nav-enhanced');
+  new IntersectionObserver(([entry])=>{
+    siteHeader.classList.toggle('is-scrolled',!entry.isIntersecting&&entry.boundingClientRect.top<0);
+  }).observe(headerSentinel);
+}
 const menuButton=document.querySelector('.menu-toggle');
 const navigation=document.querySelector('.navlinks');
-menuButton?.addEventListener('click',()=>{const open=menuButton.getAttribute('aria-expanded')!=='true';menuButton.setAttribute('aria-expanded',String(open));navigation.classList.toggle('open',open);menuButton.textContent=open?'Close menu':'Menu';});
+menuButton?.addEventListener('click',()=>{const open=menuButton.getAttribute('aria-expanded')!=='true';menuButton.setAttribute('aria-expanded',String(open));navigation.classList.toggle('open',open);siteHeader?.classList.toggle('menu-open',open);menuButton.textContent=open?'Close menu':'Menu';});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menuButton?.getAttribute('aria-expanded')==='true'){menuButton.click();menuButton.focus();}});
 document.querySelectorAll('[data-filter]').forEach(button=>button.addEventListener('click',()=>{const category=button.dataset.filter;document.querySelectorAll('[data-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));let count=0;document.querySelectorAll('.gallery-grid > [data-category]').forEach(card=>{card.hidden=category!=='All'&&card.dataset.category!==category;if(!card.hidden)count++;});document.querySelector('.gallery-count').textContent=`${count} projects`; }));
 const lightbox=document.querySelector('.lightbox');
