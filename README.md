@@ -1,10 +1,10 @@
 # Montesinos Electric redesign
 
-A portable, static website for Montesinos Electric, with a black-and-yellow design, the original logo, and photographs from the current Wix website. No framework or server dependency is needed to serve `dist/`.
+A portable, static website for Montesinos Electric, serving the Valley, with a black-and-yellow design, the original logo, and photographs from the current Wix website. No framework or server dependency is needed to serve `dist/`.
 
 ## Preview
 
-From this directory, run `python -m http.server 4173 --directory dist --bind 127.0.0.1`, then visit http://127.0.0.1:4173/.
+From this directory, run `python preview_server.py`, then visit [localhost](http://127.0.0.1:4173/). The preview server serves the latest files without caching them.
 
 ## Content and pages
 
@@ -24,4 +24,12 @@ The Sites project ID and static directory live in `.openai/hosting.json`. This b
 
 ## Source and review
 
-See `SOURCE-AUDIT.md` for the original page review and pending business details. See `SKILLS-RESEARCH.md` for the reusable skills researched and selected. Photos are optimized from originals with their subjects preserved; original files remain locally in ignored `source-assets/`. The wing-shaped logo is the original website mark, recolored black for the requested palette. Fonts are served locally.
+See `SOURCE-AUDIT.md` for the original page review and pending business details, `RECENT-DESIGN-SKILLS.md` for the October 9 skills search, and `DESIGN-REVIEW.md` for the visual review. Photos are optimized from originals with their subjects preserved; originals remain locally in ignored `source-assets/`. The original wing-shaped mark is recolored black for the requested palette. Source Sans 3 is served locally as a 29 KB variable WOFF2 font; its license is included with the asset.
+
+## Photo motion
+
+Project, service and team photographs drift gently inside cropped frames as visitors scroll. Native CSS view timelines are a progressive enhancement; text and layout stay fixed. Phone layouts use less travel. Reduced-motion settings and browsers without scroll-timeline support show still photographs. No animation library or build-time JavaScript dependency is required. With JavaScript disabled, navigation and direct photo links remain available; quote requests are directed to the phone number.
+
+## GitHub
+
+Source and generated output are maintained on `main` at [wnzel/montesinoselectric](https://github.com/wnzel/montesinoselectric). Pushing this repository does not deploy the business domain.

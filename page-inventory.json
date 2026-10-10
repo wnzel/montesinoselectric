@@ -1,9 +1,9 @@
 {
-  "/": "Phoenix Electricians \u2014 The Good Guy Price",
-  "/services/": "Electrical Services in Phoenix",
-  "/services/ground-up-service/": "Ground-up Service in Phoenix",
-  "/services/electrical-fixture-installation/": "Electrical Fixture Installation in Phoenix",
-  "/services/electrical-troubleshooting/": "Electrical Troubleshooting in Phoenix",
+  "/": "Valley Electricians: The Good Guy Price",
+  "/services/": "Electrical Services Across the Valley",
+  "/services/ground-up-service/": "Ground-up Service Across the Valley",
+  "/services/electrical-fixture-installation/": "Electrical Fixture Installation Across the Valley",
+  "/services/electrical-troubleshooting/": "Electrical Troubleshooting Across the Valley",
   "/portfolio/": "Electrical Project Gallery",
   "/about/": "Our Family-Owned Electrical Business",
   "/blog/": "Project Stories & Blog",
@@ -11,7 +11,7 @@
   "/post/commercial/": "Commercial Electrical Projects",
   "/post/industrial/": "Industrial Electrical Projects",
   "/contact/": "Contact & Free Electrical Quote",
-  "/service-area/": "Phoenix Electrical Service Area",
+  "/service-area/": "Valley Electrical Service Area",
   "/privacy/": "Website Privacy",
   "/accessibility/": "Accessibility",
   "/404/": "Page Not Found"

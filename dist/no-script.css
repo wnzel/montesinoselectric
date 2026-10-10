@@ -1,0 +1,8 @@
+/* Loaded only when scripting is disabled. Photo links open their full images. */
+.menu-toggle, .filters [data-filter], .load-map, .quote-form { display: none; }
+.photo-frame { --photo-bleed: 0px !important; }
+.photo-frame > img { animation: none !important; transform: none !important; }
+@media (max-width: 960px) {
+  .nav { height: auto; min-height: 72px; flex-wrap: wrap; padding-block: 20px; }
+  .navlinks { position: static; display: flex; width: 100%; padding: 0; border: 0; }
+}
