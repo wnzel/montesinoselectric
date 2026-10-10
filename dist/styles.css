@@ -40,7 +40,8 @@ p { color: var(--muted); text-wrap: pretty; }
 .utility .wrap { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
 .utility a:hover { text-decoration: underline; }
 .header-sentinel { position: absolute; top: 48px; left: 0; width: 1px; height: 1px; pointer-events: none; }
-.header { background: var(--paper); position: sticky; top: 0; z-index: var(--z-header); border-bottom: 1px solid var(--line); transition: background-color 180ms ease-out, color 180ms ease-out, border-color 180ms ease-out; }
+.header { background: var(--paper); position: sticky; top: 0; z-index: var(--z-header); border-bottom: 1px solid var(--line); }
+.header.nav-ready { transition: background-color 180ms ease-out, color 180ms ease-out, border-color 180ms ease-out; }
 .home-page .header { margin-bottom: -81px; }
 .home-page.nav-enhanced .header:not(.is-scrolled):not(.menu-open) { background: transparent; color: var(--paper); border-color: transparent; }
 .home-page.nav-enhanced .header:not(.is-scrolled):not(.menu-open) .brand img { filter: invert(1); }

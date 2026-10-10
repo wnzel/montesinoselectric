@@ -8,6 +8,8 @@ if(siteHeader&&headerSentinel&&'IntersectionObserver' in window){
   new IntersectionObserver(([entry])=>{
     siteHeader.classList.toggle('is-scrolled',!entry.isIntersecting&&entry.boundingClientRect.top<0);
   }).observe(headerSentinel);
+  // Paint the transparent initial state before enabling scroll/menu fades.
+  requestAnimationFrame(()=>requestAnimationFrame(()=>siteHeader.classList.add('nav-ready')));
 }
 const menuButton=document.querySelector('.menu-toggle');
 const navigation=document.querySelector('.navlinks');
