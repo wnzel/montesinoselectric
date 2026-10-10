@@ -42,19 +42,22 @@ logo=re.sub(r'<defs>.*?</defs>','',logo,flags=re.S).replace('viewbox=','viewBox=
 (DIST/'assets'/'logo.svg').write_text(logo,encoding='utf-8')
 
 def brand():return '<a class="brand" href="/" aria-label="Montesinos Electric home"><img src="/assets/logo.svg" alt="" width="35" height="40"><strong>MONTESINOS<span>ELECTRIC</span></strong></a>'
-NAV=[('Services','/services/'),('Our work','/portfolio/'),('Our story','/about/'),('Blog','/blog/')]
+NAV=[('Gallery','/portfolio/'),('About us','/about/'),('Blog','/blog/')]
 def header(active,home=False):
     links=''.join(f'<a href="{path}"'+(' aria-current="page"' if path==active else '')+f'>{label}</a>' for label,path in NAV)
+    service_links=''.join(f'<a href="/services/{s["slug"]}/">{s["name"]}</a>' for s in SERVICES)
+    services=f'<div class="services-nav"><div class="services-trigger"><a href="/services/"'+(' aria-current="page"' if active=='/services/' else '')+f'>Services</a><button class="services-toggle" type="button" aria-label="Show electrical services" aria-expanded="false" aria-controls="service-navigation"><span class="chevron" aria-hidden="true"></span></button></div><div class="services-panel" id="service-navigation" hidden>{service_links}<a href="/service-area/">Valley service area</a></div></div>'
     sentinel='<span class="header-sentinel" aria-hidden="true"></span>' if home else ''
-    return f'''<a class="skip" href="#main">Skip to content</a><div class="utility"><div class="wrap"><span class="local-line">Family-owned electrical service across the Valley</span><a href="tel:{B['phoneLink']}">Hablamos español &nbsp; {B['phone']}</a></div>{sentinel}</div><header class="header"><nav class="nav wrap" aria-label="Main navigation">{brand()}<button class="menu-toggle" aria-expanded="false" aria-controls="navigation">Menu</button><div class="navlinks" id="navigation">{links}<a href="/contact/">Contact</a>{button('Get a free quote','/contact/')}</div></nav></header>'''
+    quote='#request-quote' if home else '/contact/'
+    return f'''<a class="skip" href="#main">Skip to content</a><div class="utility"><div class="wrap"><span class="local-line">Family-owned electrical service across the Valley</span><a href="tel:{B['phoneLink']}">Hablamos español &nbsp; {B['phone']}</a></div>{sentinel}</div><header class="header"><nav class="nav wrap" aria-label="Main navigation">{brand()}<button class="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="navigation"><span class="menu-lines" aria-hidden="true"></span><span class="menu-label">Menu</span></button><div class="navlinks" id="navigation">{services}{links}<a href="/contact/">Contact us</a>{button('Free quote',quote)}<a class="nav-phone" href="tel:{B['phoneLink']}">{B['phone']}</a></div></nav></header>'''
 def footer():
-    return f'''<footer class="footer"><div class="wrap"><div class="footer-top"><div>{brand()}<p>Family-owned electrical services. Honest work and the good guy price.</p></div><div><h3>Explore</h3><ul><li><a href="/services/">Our services</a></li><li><a href="/portfolio/">Our work</a></li><li><a href="/about/">Our story</a></li><li><a href="/blog/">Blog</a></li></ul></div><div><h3>How we can help</h3><ul><li><a href="/services/ground-up-service/">Ground-up service</a></li><li><a href="/services/electrical-fixture-installation/">Fixture installation</a></li><li><a href="/services/electrical-troubleshooting/">Troubleshooting</a></li><li><a href="/service-area/">Valley service area</a></li></ul></div><div><h3>Let’s talk about your project</h3><a class="phone" href="tel:{B['phoneLink']}">{B['phone']}</a><p>Hablamos español<br>Serving the Valley</p><ul><li><a href="/contact/">Get a free quote</a></li></ul></div></div><div class="footer-bottom"><span>© 2026 Montesinos Electric. All rights reserved.</span><div><a href="/privacy/">Website privacy</a><a href="/accessibility/">Accessibility</a></div></div></div></footer><div class="mobile-contact"> <a href="tel:{B['phoneLink']}">Call Montesinos</a><a href="/contact/">Free quote </a></div>'''
+    return f'''<footer class="footer"><div class="wrap">{brand()}<p>Family-owned electrical services. The good guy price.</p><nav class="footer-nav" aria-label="Footer navigation"><a href="/about/">About us</a><a href="/portfolio/">Gallery</a><a href="/services/">Services</a><a href="/blog/">Blog</a><a href="/contact/">Contact us</a><a href="/service-area/">Service area</a></nav><a class="phone" href="tel:{B['phoneLink']}">{B['phone']}</a><p>Hablamos español. Serving the Valley.</p><div class="footer-bottom"><div><a href="/privacy/">Website privacy</a><a href="/accessibility/">Accessibility</a></div><span>© 2026 Montesinos Electric. All rights reserved.</span></div></div></footer><div class="mobile-contact"><a href="tel:{B['phoneLink']}">Call Montesinos</a><a href="/contact/">Free quote</a></div>'''
 def cta():return f'<section class="cta"><div class="wrap"><div><h2>Have an electrical project?</h2><p>Call Montesinos Electric to discuss the work and get a free quote.</p></div><div class="cta-actions">{button("Get a free quote","/contact/")}{button(B["phone"],"tel:"+B["phoneLink"],"outline")}</div></div></section>'
 def lightbox():return '<dialog class="lightbox" aria-labelledby="photo-title"><div class="lightbox-header"><h2 id="photo-title"></h2><button class="lightbox-close" aria-label="Close photo">✕</button></div><img class="lightbox-image" alt=""><div class="lightbox-controls"><button class="lightbox-prev" aria-label="Previous photo">‹</button><span class="lightbox-count" aria-live="polite"></span><button class="lightbox-next" aria-label="Next photo">›</button></div></dialog>'
 def project(p):
     src='/assets/'+Path(p['image']).with_suffix('.webp').name
     return f'''<article class="project-card" data-category="{p['category']}"><a class="project-open" href="{src}" data-image="{src}" data-title="{e(p['title'])}" data-category="{p['category']}" aria-label="View photo: {e(p['title'])}"><div class="project-image photo-frame">{image(p['image'],p['title'])}</div><div class="project-meta"><span>{p['category']}</span><h3>{e(p['title'])}</h3></div></a></article>'''
-def service(s):return f'<article class="service-row"><a class="service-thumb" href="/services/{s["slug"]}/" aria-label="Learn about {s["name"]}">{photo(s["image"],s["name"]+" by Montesinos Electric")}</a><div class="service-body"><h3><a href="/services/{s["slug"]}/">{s["name"]}</a></h3><p>{s["short"]}</p></div><a class="text-link" href="/services/{s["slug"]}/" aria-label="View {s["name"]}">View service</a></article>'
+def service(s):return f'<article class="service-row"><a class="service-thumb" href="/services/{s["slug"]}/" aria-label="Learn about {s["name"]}">{photo(s["image"],s["name"]+" by Montesinos Electric")}</a><div class="service-body"><h3><a href="/services/{s["slug"]}/">{s["name"]}</a></h3><p>{s["short"]}</p>{button("Explore this service","/services/"+s["slug"]+"/","outline")}</div></article>'
 POSTS=[('residential','Residential','Panels and lighting for homes','Panels, utility connections, lighting, fans, and outlet wiring for homes.'),('commercial','Commercial','Commercial installations','Lighting, car wash equipment, panels, and conduit for commercial spaces.'),('industrial','Industrial','Motors and industrial equipment','Three-phase motors, compressors, switches, and conduit installations.')]
 def blogcard(post):
     slug,category,title,desc=post
@@ -62,9 +65,39 @@ def blogcard(post):
     return f'''<article class="blog-card"><a href="/post/{slug}/" aria-label="Read {category} project story">{photo(representative['image'],representative['title'])}</a><div class="post-meta"><span>{category}</span><time datetime="2025-10-29">Oct 29, 2025</time></div><h3><a href="/post/{slug}/">{title}</a></h3><p>{desc}</p>{textlink('Read project story','/post/'+slug+'/')}</article>'''
 def mapblock():return '<div class="map-panel"><iframe title="Greater Phoenix area (the Valley) map" src="https://www.google.com/maps?q=Phoenix%2C%20Arizona&amp;z=9&amp;output=embed" width="640" height="360" loading="eager" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>'
 def area():return f'<section class="section area"><div class="wrap area-grid"><div class="area-copy"><h2>Serving the<br>Valley</h2><p>Tell us where your project is located. We’ll confirm availability for your address and discuss the electrical work you need.</p></div>{mapblock()}</div></section>'
-def story():return f'<section class="section"><div class="wrap story-grid"><div class="story-photos">{photo("b491a5_c102ea168a4c4b76956029cafde38851~mv2.jpg","Montesinos Electric team installing lighting","large")}{photo("b491a5_34c9b999e8984462b71b9c1979b3d321~mv2.jpeg","Montesinos Electric crew working on utility piping","small")}</div><div class="story-copy"><h2>A family-owned<br>electrical business</h2><p>{B["story"]}</p>{textlink("Meet Montesinos Electric","/about/")}</div></div></section>'
+def story():return f'<section class="section"><div class="wrap story-grid"><div class="story-photos">{photo("b491a5_c102ea168a4c4b76956029cafde38851~mv2.jpg","Montesinos Electric team installing lighting","large")}{photo("b491a5_34c9b999e8984462b71b9c1979b3d321~mv2.jpeg","Montesinos Electric crew working on utility piping","small")}</div><div class="story-copy"><h2>A family-owned electrical business</h2><p>{B["story"]}</p>{textlink("Meet Montesinos Electric","/about/")}</div></div></section>'
 def intro(title,copy,crumb=''):
     return f'<section class="page-intro"><div class="wrap"><div class="breadcrumb"><a href="/">Home</a><span>/</span>{crumb or e(title)}</div><h1>{title}</h1><p>{copy}</p></div></section>'
+def quote_section(home=False):
+    heading = '<h2 id="quote-title">Request a free quote</h2>' if home else '<h1 id="quote-title">Request a free quote</h1>'
+    return f'''<section class="{"section " if home else ""}contact-screen quote-section" id="request-quote" tabindex="-1" aria-labelledby="quote-title"><div class="wrap contact-layout">
+  <div class="contact-heading">
+    <div class="breadcrumb"><a href="/">Home</a><span>/</span>Contact &amp; free quote</div>
+    {heading}
+    <p>Call our team or prepare your project details below.</p>
+  </div>
+  <div class="contact-form-panel"><form class="quote-form" id="quote-form">
+    <h2>Your project details</h2>
+    <p class="form-intro">Prepare a summary to copy and share. It does not send your request.</p>
+    <div class="form-grid">
+      <div class="field"><label for="name">Your name *</label><input id="name" name="name" autocomplete="name" required maxlength="120" placeholder="First and last name"></div>
+      <div class="field"><label for="phone">Phone number *</label><input id="phone" name="phone" type="tel" autocomplete="tel" required maxlength="30" placeholder="(602) 555-0123"></div>
+      <div class="field"><label for="email">Email <small>(optional)</small></label><input id="email" name="email" type="email" autocomplete="email" maxlength="200" placeholder="you@example.com"></div>
+      <div class="field location-field"><label for="location">Project city or ZIP code *</label><input id="location" name="location" autocomplete="address-level2" required maxlength="120" placeholder="Phoenix, AZ"></div>
+      <div class="field service-field"><label for="service">What can we help with? *</label><select id="service" name="service" required><option value="">Select a service</option>{''.join(f'<option value="{s["slug"]}">{s["name"]}</option>' for s in SERVICES)}<option value="other">Other electrical project</option></select></div>
+      <div class="field wide"><label for="details">Tell us about your project *</label><textarea id="details" name="details" required maxlength="5000" placeholder="What needs to be installed, built, or fixed?"></textarea></div>
+    </div>
+    <button class="button" type="submit">Prepare my quote request</button>
+    <p class="form-note">Details stay in your browser. <a href="/privacy/">Website privacy</a></p>
+    <section class="quote-result" id="quote-result" hidden aria-labelledby="result-title"><h3 id="result-title" tabindex="-1">Your project details are ready.</h3><p>These details have not been sent. Call {B['phone']} to arrange your free quote, or copy your request to share with the team.</p><label class="sr-only" for="request-summary">Your prepared quote request</label><textarea id="request-summary" readonly></textarea><div class="result-actions">{button('Call Montesinos Electric','tel:'+B['phoneLink'])}<button type="button" class="button outline" id="copy-request">Copy request details</button></div><p id="copy-status" role="status" style="margin-top:12px"></p></section>
+  </form><noscript><p>Call <a class="text-link" href="tel:{B["phoneLink"]}">{B["phone"]}</a> to discuss your project and request a free quote.</p></noscript></div>
+  <aside class="contact-details" aria-label="Contact information">
+    <div class="contact-item"><span>Call Montesinos Electric</span><a href="tel:{B['phoneLink']}">{B['phone']}</a><p>Hablamos español.</p></div>
+    <div class="contact-item"><span>Additional phone</span><a href="tel:+16025164732">{B['additionalPhone']}</a></div>
+    <div class="contact-item"><span>Service area</span><strong>The Valley, Arizona</strong><p>Call to confirm availability for your project location.</p></div>
+  </aside>
+</div></section>'''
+
 PAGES={}
 def save(path,title,description,content,active='',schema=None):
     url=ORIGIN+path
@@ -81,14 +114,15 @@ home=f'''<section class="hero" aria-labelledby="hero-title">
     <p class="location">Licensed &amp; insured</p>
     <h1 id="hero-title">Your Valley<br>electricians.</h1>
     <p class="intro">Installation, troubleshooting and maintenance for homes, businesses and industrial spaces.</p>
-    <div class="hero-actions">{button('Get a free quote','/contact/')}<a class="call-link" href="tel:{B['phoneLink']}">{B['phone']}</a></div>
+    <div class="hero-actions">{button('Get a free quote <span class="button-arrow" aria-hidden="true">→</span>','#request-quote')}<a class="button on-photo" href="/services/">Explore services</a></div>
   </div></div>
   <a class="hero-down" href="#electrical-services" aria-label="Explore electrical services"><span aria-hidden="true">↓</span></a>
 </section>
 <section class="section wrap" id="electrical-services" tabindex="-1" aria-labelledby="services-title"><div class="section-head"><div><h2 id="services-title">Electrical services</h2><p>Start with a free quote for new construction, fixture installation or an electrical problem.</p></div>{textlink('Explore all services','/services/')}</div><div class="service-list">{''.join(service(s) for s in SERVICES)}</div></section>
-<section class="section work-section"><div class="wrap"><div class="section-head"><div><h2>Our work</h2><p>Lighting for a home, canopy fixtures for a business, and equipment connections for a tire shop.</p></div>{textlink('View our project gallery','/portfolio/')}</div><div class="cards">{''.join(project(PROJECTS[i]) for i in [0,7,13])}</div></div></section>
-{story()}{area()}
-<section class="section wrap"><div class="section-head"><div><h2>Project stories</h2><p>Browse our residential, commercial and industrial project collections.</p></div>{textlink('Visit the blog','/blog/')}</div><div class="journal-grid">{''.join(blogcard(p) for p in POSTS)}</div></section>{cta()}'''
+<section class="section work-section"><div class="wrap gallery-preview"><div class="gallery-intro"><h2>Our electrical work</h2><p>Residential, commercial and industrial projects from our team.</p>{textlink('Explore the gallery','/portfolio/')}</div><div class="project-slider" role="region" aria-roledescription="carousel" aria-label="Featured electrical projects"><div class="gallery-track" id="featured-projects">{''.join(project(PROJECTS[i]) for i in [0,7,13,2,8,14])}</div><div class="carousel-controls" hidden><button type="button" class="carousel-prev" aria-label="Previous projects" aria-controls="featured-projects">←</button><span class="carousel-status" role="status" aria-live="polite"></span><button type="button" class="carousel-next" aria-label="Next projects" aria-controls="featured-projects">→</button></div></div></div></section>
+{story()}<section class="value-band"><div class="wrap"><h2>The good guy price.</h2><p>Competitive pricing and clear communication about your electrical work.</p><ul><li>Family-owned</li><li>Licensed &amp; insured</li><li>Nearly 20 years of electrical experience</li></ul></div></section>{area()}
+
+<section class="section wrap"><div class="section-head"><div><h2>Project stories</h2><p>Browse our residential, commercial and industrial project collections.</p></div>{textlink('Visit the blog','/blog/')}</div><div class="journal-grid">{''.join(blogcard(p) for p in POSTS)}</div></section>{quote_section(home=True)}'''
 save('/','Valley Electricians: The Good Guy Price','Family-owned electrical services across the Valley. Explore real residential, commercial and industrial work. Call (623) 202-2164 for a free quote.',home)
 
 faq='<section class="section area"><div class="wrap faq"><h2>Common questions</h2><details><summary>Do you offer free quotes?</summary><p>Yes. Ground-up service, fixture installation, and troubleshooting are all available with a free quote. Call us to discuss the scope of your project.</p></details><details><summary>Do you work on homes and businesses?</summary><p>Our existing projects include residential, commercial, and industrial electrical work. Explore the gallery to see examples.</p></details><details><summary>Can I speak with someone in Spanish?</summary><p>Sí. Llame al (623) 202-2164 para hablar sobre su proyecto.</p></details><details><summary>How do I get started?</summary><p>Call (623) 202-2164 or prepare your project details on our free quote page. Have your location and a short description of the work ready.</p></details></div></section>'
@@ -110,31 +144,7 @@ for post in POSTS:
     schema={'@context':'https://schema.org','@type':'BlogPosting','headline':category+' project stories','datePublished':'2025-10-29','author':{'@type':'Organization','name':B['name']},'image':ORIGIN+'/assets/'+Path(featured['image']).with_suffix('.webp').name,'publisher':{'@id':ORIGIN+'/#business'}}
     save('/post/'+slug+'/',category+' Electrical Projects',desc,content,'/blog/',schema)
 
-contact=f'''<section class="contact-screen" aria-labelledby="quote-title"><div class="wrap contact-layout">
-  <aside class="contact-aside">
-    <div class="breadcrumb"><a href="/">Home</a><span>/</span>Contact &amp; free quote</div>
-    <h1 id="quote-title">Request a free quote</h1>
-    <p>Call our team or prepare your project details below.</p>
-    <div class="contact-item"><span>Call Montesinos Electric</span><a href="tel:{B['phoneLink']}">{B['phone']}</a><p>Hablamos español.</p></div>
-    <div class="contact-item"><span>Additional phone</span><a href="tel:+16025164732">{B['additionalPhone']}</a></div>
-    <div class="contact-item"><span>Service area</span><strong>The Valley, Arizona</strong><p>Call to confirm availability for your project location.</p></div>
-  </aside>
-  <div><form class="quote-form" id="quote-form">
-    <h2>Your project details</h2>
-    <p class="form-intro">Prepare a summary to copy and share. It does not send your request.</p>
-    <div class="form-grid">
-      <div class="field"><label for="name">Your name *</label><input id="name" name="name" autocomplete="name" required maxlength="120" placeholder="First and last name"></div>
-      <div class="field"><label for="phone">Phone number *</label><input id="phone" name="phone" type="tel" autocomplete="tel" required maxlength="30" placeholder="(602) 555-0123"></div>
-      <div class="field"><label for="email">Email <small>(optional)</small></label><input id="email" name="email" type="email" autocomplete="email" maxlength="200" placeholder="you@example.com"></div>
-      <div class="field location-field"><label for="location">Project city or ZIP code *</label><input id="location" name="location" autocomplete="address-level2" required maxlength="120" placeholder="Phoenix, AZ"></div>
-      <div class="field service-field"><label for="service">What can we help with? *</label><select id="service" name="service" required><option value="">Select a service</option>{''.join(f'<option value="{s["slug"]}">{s["name"]}</option>' for s in SERVICES)}<option value="other">Other electrical project</option></select></div>
-      <div class="field wide"><label for="details">Tell us about your project *</label><textarea id="details" name="details" required maxlength="5000" placeholder="What needs to be installed, built, or fixed?"></textarea></div>
-    </div>
-    <button class="button" type="submit">Prepare my quote request</button>
-    <p class="form-note">Details stay in your browser. <a href="/privacy/">Website privacy</a></p>
-    <section class="quote-result" id="quote-result" hidden aria-labelledby="result-title"><h3 id="result-title" tabindex="-1">Your project details are ready.</h3><p>These details have not been sent. Call {B['phone']} to arrange your free quote, or copy your request to share with the team.</p><label class="sr-only" for="request-summary">Your prepared quote request</label><textarea id="request-summary" readonly></textarea><div class="result-actions">{button('Call Montesinos Electric','tel:'+B['phoneLink'])}<button type="button" class="button outline" id="copy-request">Copy request details</button></div><p id="copy-status" role="status" style="margin-top:12px"></p></section>
-  </form><noscript><p>Call <a class="text-link" href="tel:{B["phoneLink"]}">{B["phone"]}</a> to discuss your project and request a free quote.</p></noscript></div>
-</div></section>'''+area()
+contact=quote_section()+area()
 save('/contact/','Contact & Free Electrical Quote','Contact Montesinos Electric for electrical work across the Valley at (623) 202-2164. Prepare your electrical project details and call for a free quote.',contact)
 save('/service-area/','Valley Electrical Service Area','Montesinos Electric serves electrical projects across the Valley. Explore the area map and call to confirm availability for your location.',intro('Valley service area','We work on residential, commercial and industrial electrical projects. Call to confirm availability at your location.','Service area')+area()+cta())
 privacy=intro('Website privacy.','How this website handles the details you enter.','Website privacy')+f'''<section class="page-content wrap"><div class="plain-copy"><p>Last updated October 9, 2026.</p><h2>Preparing a quote request</h2><p>The quote form prepares a summary in your browser. It does not send a request, email the business, or save your details to a database. The website does not use local storage to save form entries. The form includes a name, phone number, optional email, project location, service, and project description. You choose whether to copy those details and share them with the team.</p><h2>Calling or copying your details</h2><p>Phone links open your device’s calling application. The copy button writes the prepared request to your clipboard when you select it. Your device or browser may have its own clipboard and autofill settings.</p><h2>Maps and external links</h2><p>Google Maps loads automatically on pages that display the Valley map. Google then handles that map connection under its own <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">privacy policy</a>. The Google Maps business listing also opens on Google’s website. Website hosting may process ordinary connection information to serve pages.</p><h2>Contact</h2><p>For questions about Montesinos Electric, call <a href="tel:{B['phoneLink']}">{B['phone']}</a>.</p></div></section>'''

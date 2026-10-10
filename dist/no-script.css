@@ -1,9 +1,9 @@
 /* Loaded only when scripting is disabled. Photo links open their full images. */
-.menu-toggle, .filters [data-filter], .quote-form { display: none; }
+.menu-toggle, .services-toggle, .filters [data-filter], .quote-form { display: none; }
 .photo-frame { --photo-bleed: 0px !important; }
 .photo-frame > img { animation: none !important; transform: none !important; }
 .home-page .header { margin-bottom: 0; }
-@media (max-width: 960px) {
+@media (max-width: 1199px) {
   .nav { height: auto; min-height: 72px; flex-wrap: wrap; padding-block: 20px; }
-  .navlinks { position: static; display: flex; width: 100%; padding: 0; border: 0; }
+  .navlinks { position: static; display: flex; flex-direction: column; align-items: stretch; width: 100%; padding: 0; border: 0; max-height: none; box-shadow: none; }
 }

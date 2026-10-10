@@ -1,5 +1,7 @@
 # Montesinos Electric redesign
 
+October 10 template update: the service-business-website skill now shapes the navigation, centered photo hero, larger alternating service rows, manual project carousel, paired About photos, shared homepage/Contact quote form and centered footer. The existing brand, evidence, routes and form contract are retained. Desktop quote details still fit together in the first screen; mobile stacks the heading, form and contact information with matched reading order. The yellow banner and transparent-to-white navbar remain. Only the family-business photos have scroll-linked motion. See DESIGN.md and DESIGN-REVIEW.md for the current composition; earlier descriptions below record the original redesign.
+
 A portable, static website for Montesinos Electric, serving the Valley, with a black-and-yellow design, the original logo, and photographs from the current Wix website. No framework or server dependency is needed to serve `dist/`.
 
 ## Preview

@@ -1,5 +1,25 @@
 # Design review, October 9, 2026
 
+## October 10 service-business template refinement
+
+Applied the explicitly requested service-business-website skill in the existing static generator. Persuade / Operate, variance 5, motion 3, density 4. Read this as a practical photo-led contractor website, keeping the established Source Sans 3 and black/yellow identity. The following review supersedes the earlier layout descriptions below.
+
+| Before | After | Why |
+| --- | --- | --- |
+| Plain Services navigation link | Overview link plus separate accessible services disclosure | Matches the saved template while retaining every service URL. |
+| Small service thumbnails and separate trailing link | Large alternating image/copy rows with centered copy and outlined action | Gives real electrical work more space and aligns each text group. |
+| Three homepage project cards | Manual two-project/one-project carousel with visible arrows and swipe | Matches the reference geometry and fits narrow screens. |
+| Left hero title and separate action alignment | Heading, paragraph and two CTAs share one centered column | Implements the user's centered-text request. |
+| Quote form only on Contact | Shared component on Home and Contact, with a real Contact URL | Gives homepage quote actions a complete destination. |
+| Contact links precede the mobile form | Heading, form, then contact details in both DOM and visual order | Keeps reading and keyboard order coherent. |
+| Four-column footer | Larger centered mark, wrapped navigation and callable phone | Matches the template's footer without inventing social accounts. |
+
+Polish pass: centered service descriptions/captions, removed the enhanced carousel's redundant scrollbar, fixed hover-plus-click disclosure behavior, retained first-screen desktop quote fit, and preserved native modified-click photo links. No photo hover zoom or extra parallax was added, honoring the user's earlier story-only motion limit.
+
+All applicable Universal Core, Persuade and form Operate checks were reviewed: one font/brand palette/radius scale; no em dashes; checked readable copy and CTA sizing; semantic labels/focus/44px controls; real photo dimensions and eager hero/lazy supporting loading; responsive menu and section composition; validation and local summary; reduced-motion and script-free fallbacks. Loading/network submission states are N/A: no endpoint. Reviews, logo walls, counters, bento, marquee, pricing tables and testimonials are N/A: absent content. The requested photo overlay, three featured service rows, circular down shortcut and retained colored brand bands are intentional template/user exceptions to the general taste defaults. No formal Core Web Vitals benchmark was run.
+
+Content map: SOURCE-AUDIT.md and unchanged site-content.json provide business identity, primary/secondary phones, empty email/endpoint, Valley context, three services and twenty projects. Existing local assets provide the logo/photos/font. No verified reviews/social profiles exist. Original dates, metadata, JSON-LD, privacy, accessibility and deployment configuration are retained. See VERIFICATION.md for checks actually performed.
+
 October 10 navbar and contact-page refinement: continue the same practical contractor design, with the user's Peraltas Roofing navbar behavior. Persuade mode for the homepage, Operate mode for the quote form. Design variance 4, motion intensity 2, density 4; quote form density 5. The yellow banner, original logo and source photo remain.
 
 | Before | After | Why |

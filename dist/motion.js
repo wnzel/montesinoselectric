@@ -35,14 +35,4 @@
   document.fonts?.ready.then(() => ScrollTrigger.refresh());
   window.addEventListener('load', () => ScrollTrigger.refresh(), { once: true });
 
-  document.querySelector('.hero-down')?.addEventListener('click', event => {
-    // Preserve native instant anchor navigation for keyboard users.
-    if (!event.detail || event.ctrlKey || event.metaKey || event.shiftKey ||
-        window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const section = document.querySelector('#electrical-services');
-    if (!section) return;
-    event.preventDefault();
-    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    section.focus({ preventScroll: true });
-  });
 })();

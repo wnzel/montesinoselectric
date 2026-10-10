@@ -1,5 +1,20 @@
 # Verification, October 10, 2026 Vercel and photo hero
 
+## October 10 service-business-website template checks
+
+- Applied the requested saved template in the existing static generator. Content configuration and Vercel configuration are unchanged. All sixteen pages and ten original redirects remain; twenty original project entries, three services, original story/photos and both phone numbers are retained. No reviews, rating summary, social destinations or service-area boundaries were invented.
+- Local visual inspection at 1280 by 720: centered hero with two CTAs, one-row logo/navigation/quote/phone, full-screen photo, larger alternating service rows, two-project manual carousel, paired story photos and compact quote layout. Navbar changes from transparent to white on scroll. Dropdown click/close, outside click and Escape were verified.
+- Local visual inspection at 390 by 844: centered headline/copy/actions, stacked CTAs, white open-menu header, hamburger-to-close feedback, nested Services disclosure, service navigation and service-detail layout. One complete project in the carousel; Next changes the displayed project/status. Gallery filtering shows seven Industrial entries, and the dialog opens the selected photo, advances and closes correctly.
+- Narrow-phone checks at 320 by 740 cover Home, Services, Fixture Installation, Contact, Blog and About without horizontal overflow. Tablet Home at 768 by 1024 has no overflow and collapses navigation. Temporary viewport overrides were reset.
+- The dedicated quote page retains the first-screen desktop requirement: at 1280 by 720 the form and contact details end at 641px and the Valley section begins at 720px. At 1280 by 640 they end at 601px and Valley begins at 640px; at 938 by 640 the form ends at 601px, contact details at 608px and Valley at 640px. No clipping or horizontal overflow.
+- Mobile quote order is heading, form, contact details in DOM and visual order. A fixture-service link retains query-string preselection. Empty submit focuses required Name and leaves the summary hidden; a synthetic valid request produces the expected local summary and focuses its heading. No lead, email or server request was sent. Email and endpoint remain unconfigured.
+- Reduced motion at load stops hero/header transitions and story drift. Changing the preference during a visit removes both ScrollTrigger instances and resets both story transforms to none. With motion enabled only those two frames have transforms; hero/service/blog photos have none. Carousel autoplay is absent; next-at-end disables correctly and resizing from two projects to one retains the logical project position. With scripting disabled, navigation remains visible, the header is white, the hero loads, quote preparation hides and telephone alternatives remain. Both scripting and motion emulation were restored.
+- No application console errors were observed. The static validator passes all 27 HTML files, routes/assets/labels/headings/alt text/JSON-LD. JavaScript syntax and Git whitespace checks pass. Design Taste preflight scans 34 output/design files with zero hard violations and warnings. No formal performance benchmark or live email-delivery test was run.
+- Final quote-anchor check waits for native scroll completion: the homepage section lands at 97px below the sticky navbar, focuses its target, and both form/contact details end at 621px in a 720px desktop viewport. The shared compact layout satisfies the first-screen requirement on Home as well as Contact.
+- Local screenshots in ignored artifacts/: template-before.png, template-desktop.png, template-mobile.png and template-quote-desktop.png. Deployment verification will be recorded separately after pushing this revision.
+
+The earlier checks below describe previous completed revisions.
+
 October 10 navbar and quote-page checks, locally and on Vercel:
 
 - The local homepage navbar is transparent at the top, with white text and logo. At scrollY 216 it is white with dark text and remains at viewport top. Returning to the top restores the transparent state. The yellow banner remains above the photo.
